@@ -1,0 +1,56 @@
+<?php
+
+namespace KaRin;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+use pocketmine\item\Item;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\math\Vector3;
+use pocketmine\Player;
+use pocketmine\network\mcpe\protocol\ModalFormRequestPacket; // 커스텀 UI 관련
+use pocketmine\network\mcpe\protocol\ModalFormResponsePacket; // 커스텀 UI 관련
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\block\SignChangeEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\level\Position;
+use pocketmine\block\Block;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityDamageByChildEntityEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
+use pocketmine\entity\Effect;
+use pocketmine\Server; 
+use pocketmine\event\entity\EntityDeathEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\server\DataPacketReceiveEvent;
+use ifteam\SimpleArea\database\minefarm\MineFarmManager;
+use ifteam\SimpleArea\database\user\UserProperties;
+use solo\swarp\SWarp;
+use solo\swarp\Warp;
+use pocketmine\entity\EffectInstance;
+use pocketmine\scheduler\Task;
+
+class KaRin extends PluginBase implements Listener {
+	public static $prefix = "§a[ §bTeam§cPBC §a]§r";
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) :bool {
+		if ($command->getName() == "afk") {
+			if (!$player instanceof Player){
+				$sender->sendMessage ("인게임에서만 사용가능합니다.");
+				return true;
+			}
+			if ($plyer->isOP){
+				$this->getServer()->broadcastMessage ( . $prefix . "관리자".$sender."님이 잠수를 시전하셨습니다.");
+			}
+		else
+			$sender->sendMessage (.$prefix."§c권한이 없습니다.")
+		}
+  }
+?>
